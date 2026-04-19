@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandan Vithalani | Cybersecurity Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00f5ff;
+    --magenta: #ff00aa;
+    --yellow: #ffe600;
+    --green: #00ff88;
+    --bg: #020408;
+    --bg2: #030810;
+    --glass: rgba(0,245,255,0.04);
+    --glass-border: rgba(0,245,255,0.15);
+    --glass-border-hot: rgba(0,245,255,0.4);
+    --text: #c8e8f0;
+    --text-dim: #557080;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLL PROGRESS ── */
+  #scroll-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    z-index: 9999;
+    box-shadow: 0 0 12px var(--cyan);
+    transition: width 0.1s linear;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(2,4,8,0.7) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    height: 64px;
+    background: rgba(2,4,8,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--cyan);
+    text-shadow: 0 0 16px var(--cyan);
+    letter-spacing: 2px;
+  }
+
+  .nav-logo span { color: var(--magenta); text-shadow: 0 0 16px var(--magenta); }
+
+  .nav-links { display: flex; gap: 2rem; }
+
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s, text-shadow 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan);
+  }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,245,255,0.07) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
+  }
+
+  .hero-content { max-width: 800px; position: relative; }
+
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--magenta);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: var(--magenta);
+    box-shadow: 0 0 8px var(--magenta);
+  }
+
+  .hero-name {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(0,245,255,0.3);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name .accent { color: var(--cyan); text-shadow: 0 0 30px var(--cyan), 0 0 60px var(--cyan); }
+
+  .hero-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--cyan);
+    margin-bottom: 1.5rem;
+    min-height: 2em;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px; height: 1.1em;
+    background: var(--cyan);
+    margin-left: 3px;
+    animation: blink 0.8s infinite;
+    vertical-align: text-bottom;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    opacity: 0.85;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary, .btn-secondary {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 14px 32px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: transparent;
+    border: 1.5px solid var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0,245,255,0.2), inset 0 0 20px rgba(0,245,255,0.05);
+  }
+
+  .btn-primary:hover {
+    background: rgba(0,245,255,0.1);
+    box-shadow: 0 0 40px rgba(0,245,255,0.5), inset 0 0 30px rgba(0,245,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1.5px solid var(--magenta);
+    color: var(--magenta);
+    box-shadow: 0 0 20px rgba(255,0,170,0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,0,170,0.1);
+    box-shadow: 0 0 40px rgba(255,0,170,0.5);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--cyan);
+    text-shadow: 0 0 20px var(--cyan);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .sec-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .sec-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .sec-title .hl { color: var(--cyan); text-shadow: 0 0 20px var(--cyan); }
+
+  .sec-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    box-shadow: 0 0 10px var(--cyan);
+    margin-bottom: 3rem;
+  }
+
+  /* ── GLASS PANEL ── */
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .glass:hover {
+    border-color: var(--glass-border-hot);
+    box-shadow: 0 0 30px rgba(0,245,255,0.08);
+  }
+
+  /* ── ABOUT ── */
+  #about { padding: 120px 0; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-card {
+    padding: 2rem;
+    border-radius: 4px;
+  }
+
+  .about-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(0,245,255,0.08), rgba(255,0,170,0.08));
+    border: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    padding: 2.5rem;
+  }
+
+  .about-avatar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,245,255,0.015) 2px, rgba(0,245,255,0.015) 4px);
+  }
+
+  .avatar-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 20px var(--cyan));
+    position: relative;
+    z-index: 1;
+  }
+
+  .avatar-name {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--cyan);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    padding: 6px 10px;
+    border: 1px solid rgba(0,245,255,0.1);
+    border-radius: 2px;
+    background: rgba(0,245,255,0.03);
+    transition: all 0.2s;
+  }
+
+  .pill:hover { color: var(--cyan); border-color: rgba(0,245,255,0.3); }
+  .pill-icon { color: var(--cyan); }
+
+  .about-text p { margin-bottom: 1.2rem; opacity: 0.88; font-size: 1rem; }
+
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+
+  .tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    padding: 5px 14px;
+    border: 1px solid var(--glass-border);
+    color: var(--cyan);
+    letter-spacing: 1px;
+    background: rgba(0,245,255,0.04);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .tag:hover { background: rgba(0,245,255,0.1); box-shadow: 0 0 10px rgba(0,245,255,0.2); }
+
+  /* ── EXPERIENCE ── */
+  #experience { padding: 100px 0; background: linear-gradient(180deg, transparent, rgba(0,245,255,0.015) 50%, transparent); }
+
+  .exp-card {
+    padding: 2rem 2.5rem;
+    border-radius: 4px;
+    position: relative;
+    border-left: 2px solid var(--cyan);
+    box-shadow: -4px 0 20px rgba(0,245,255,0.1);
+  }
+
+  .exp-year {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-role {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-org {
+    font-size: 0.9rem;
+    color: var(--magenta);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px rgba(255,0,170,0.4);
+  }
+
+  .exp-list { list-style: none; }
+
+  .exp-list li {
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .exp-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-size: 0.7rem;
+    top: 0.45rem;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { padding: 100px 0; }
+
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+  .cert-card {
+    padding: 1.8rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    box-shadow: 0 0 12px var(--cyan);
+  }
+
+  .cert-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+
+  .cert-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-bottom: 0.3rem;
+  }
+
+  .cert-org {
+    font-size: 0.8rem;
+    color: var(--magenta);
+    margin-bottom: 0.8rem;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .cert-desc { font-size: 0.88rem; opacity: 0.75; }
+
+  /* ── SPORTS ── */
+  #sports { padding: 100px 0; background: linear-gradient(180deg, transparent, rgba(255,230,0,0.02) 50%, transparent); }
+
+  .sports-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  .trophy-card {
+    padding: 1.8rem;
+    border-radius: 4px;
+    border-left: 2px solid var(--yellow);
+    box-shadow: -4px 0 20px rgba(255,230,0,0.08);
+    background: rgba(255,230,0,0.02);
+  }
+
+  .trophy-rank {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--yellow);
+    text-shadow: 0 0 20px var(--yellow);
+    margin-bottom: 0.3rem;
+  }
+
+  .trophy-event { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.2rem; }
+  .trophy-venue { font-size: 0.8rem; color: var(--text-dim); font-family: 'Share Tech Mono', monospace; }
+
+  .sports-comps { margin-top: 2rem; }
+
+  .comp-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+
+  .comp-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+    flex-shrink: 0;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { padding: 100px 0; }
+
+  .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+  .ach-card {
+    padding: 1.8rem;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .ach-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+  .ach-text { font-size: 0.95rem; opacity: 0.85; }
+  .ach-text strong { color: var(--cyan); font-weight: 600; }
+
+  /* ── HONOURS ── */
+  #honours { padding: 100px 0; background: linear-gradient(180deg, transparent, rgba(255,0,170,0.02) 50%, transparent); }
+
+  .hon-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .hon-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem 1.8rem;
+    border-radius: 4px;
+  }
+
+  .hon-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--magenta);
+    text-shadow: 0 0 12px var(--magenta);
+    min-width: 2rem;
+    line-height: 1;
+    margin-top: 0.15rem;
+  }
+
+  .hon-text { font-size: 0.95rem; opacity: 0.85; }
+
+  /* ── LEGACY ── */
+  #legacy { padding: 100px 0; }
+
+  .legacy-card {
+    padding: 3rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, rgba(255,230,0,0.04), rgba(0,245,255,0.04));
+  }
+
+  .legacy-card::after {
+    content: '"';
+    position: absolute;
+    right: 2rem; top: -0.5rem;
+    font-size: 12rem;
+    font-family: Georgia, serif;
+    color: rgba(0,245,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .legacy-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--yellow);
+    text-shadow: 0 0 16px var(--yellow);
+    margin-bottom: 1.2rem;
+  }
+
+  .legacy-text { font-size: 1rem; opacity: 0.88; max-width: 750px; line-height: 1.8; }
+
+  .road-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+    padding: 10px 20px;
+    border: 1px solid var(--yellow);
+    border-radius: 2px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--yellow);
+    text-shadow: 0 0 8px var(--yellow);
+    background: rgba(255,230,0,0.05);
+  }
+
+  /* ── VISION ── */
+  #vision { padding: 100px 0; }
+
+  .vision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .vision-card {
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .vision-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  .vision-text { font-size: 0.95rem; opacity: 0.8; }
+
+  /* ── CAROUSEL ── */
+  #gallery { padding: 100px 0 120px; background: linear-gradient(180deg, transparent, rgba(0,245,255,0.02) 50%, transparent); }
+
+  .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    background: rgba(0,245,255,0.02);
+  }
+
+  .carousel-track {
+    display: flex;
+    animation: carousel-scroll 32s linear infinite;
+    width: max-content;
+  }
+
+  .carousel-track:hover { animation-play-state: paused; }
+
+  @keyframes carousel-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .carousel-slide {
+    width: 340px;
+    flex-shrink: 0;
+    padding: 1.5rem;
+    margin: 1.5rem 0.75rem;
+    border-radius: 4px;
+    background: rgba(0,245,255,0.03);
+    border: 1px solid rgba(0,245,255,0.1);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .carousel-slide.cyan::before { background: linear-gradient(90deg, var(--cyan), transparent); box-shadow: 0 0 10px var(--cyan); }
+  .carousel-slide.magenta::before { background: linear-gradient(90deg, var(--magenta), transparent); box-shadow: 0 0 10px var(--magenta); }
+  .carousel-slide.yellow::before { background: linear-gradient(90deg, var(--yellow), transparent); box-shadow: 0 0 10px var(--yellow); }
+  .carousel-slide.green::before { background: linear-gradient(90deg, var(--green), transparent); box-shadow: 0 0 10px var(--green); }
+
+  .carousel-slide:hover {
+    border-color: rgba(0,245,255,0.35);
+    box-shadow: 0 0 30px rgba(0,245,255,0.1);
+    transform: translateY(-4px);
+  }
+
+  .slide-category {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .slide-category.cyan { color: var(--cyan); }
+  .slide-category.magenta { color: var(--magenta); }
+  .slide-category.yellow { color: var(--yellow); }
+  .slide-category.green { color: var(--green); }
+
+  .slide-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+
+  .slide-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .slide-desc { font-size: 0.85rem; opacity: 0.7; line-height: 1.5; }
+
+  .carousel-fade-l, .carousel-fade-r {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-fade-l {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg), transparent);
+  }
+
+  .carousel-fade-r {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg), transparent);
+  }
+
+  /* ── IMAGE GALLERY ── */
+  #image-gallery {
+    padding: 120px 0;
+    background: linear-gradient(180deg, rgba(0,245,255,0.02) 0%, transparent 50%, rgba(255,0,170,0.02) 100%);
+    position: relative;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    height: 280px;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,245,255,0.1) 0%, rgba(255,0,170,0.1) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(8px);
+  }
+
+  .gallery-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan);
+    letter-spacing: 1px;
+    animation: float-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes float-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gallery-item:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,245,255,0.4), inset 0 0 30px rgba(0,245,255,0.1);
+    transform: translateY(-8px);
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.08) rotateZ(0.5deg);
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-item:hover .gallery-label {
+    animation: float-up 0.6s ease-out forwards;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(2,4,8,0.95);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    animation: fade-in 0.3s ease;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; backdrop-filter: blur(0px); }
+    to { opacity: 1; backdrop-filter: blur(10px); }
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 50px rgba(0,245,255,0.6);
+    animation: zoom-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes zoom-in {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    color: var(--cyan);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 10px var(--cyan);
+  }
+
+  .lightbox-close:hover {
+    color: var(--magenta);
+    text-shadow: 0 0 20px var(--magenta);
+    transform: scale(1.2);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    font-size: 2rem;
+    color: var(--cyan);
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 10px var(--cyan);
+    pointer-events: auto;
+  }
+
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    color: var(--magenta);
+    text-shadow: 0 0 20px var(--magenta);
+    transform: scale(1.3);
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      height: 200px;
+    }
+
+    .lightbox-img {
+      max-width: 95vw;
+      max-height: 85vh;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 5%;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+    background: rgba(2,4,8,0.9);
+  }
+
+  .footer-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--cyan);
+    text-shadow: 0 0 20px var(--cyan);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--cyan); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .sports-grid { grid-template-columns: 1fr; }
+    .vision-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-bar"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Nandan Vithalani<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#sports">Sports</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#gallery">Highlights</a>
+    <a href="#image-gallery">Gallery</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">BCA Graduate · Cybersecurity Professional</div>
+      <h1 class="hero-name">
+        Nandan<br><span class="accent">Vithalani</span>
+      </h1>
+      <div class="hero-title" id="typing-text"><span class="cursor"></span></div>
+      <p class="hero-desc">
+        A unique convergence of cybersecurity expertise, national-level athletic precision, and a legacy of national service. Dedicated to fortifying India's digital frontiers.
+      </p>
+      <div class="hero-btns">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="mailto:nandanvithalani999@gmail.com" class="btn-secondary">Contact Me</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">28th</div>
+          <div class="stat-label">EC-Council Global Rank</div>
+        </div>
+        <div>
+          <div class="stat-num">Global</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div>
+          <div class="stat-num">🥇</div>
+          <div class="stat-label">National Shooter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-label">// 01. About</div>
+    <h2 class="sec-title">Who I <span class="hl">Am</span></h2>
+    <div class="sec-line"></div>
+    <div class="about-grid">
+      <div>
+        <div class="about-avatar">
+          <div class="avatar-icon">🎯</div>
+          <div class="avatar-name">Nandan Vithalani</div>
+          <div class="contact-pills">
+            <div class="pill"><span class="pill-icon">✉</span> nandanvithalani999@gmail.com</div>
+            <div class="pill"><span class="pill-icon">📞</span> +91 8888884028</div>
+            <div class="pill"><span class="pill-icon">🔗</span> linkedin.com/in/nandan-vithalani</div>
+            <div class="pill"><span class="pill-icon">📍</span> Rajkot, Gujarat, India</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text fade-in">
+        <p>
+          I am a motivated <strong style="color:var(--cyan)">BCA graduate</strong> from Marwadi University, Rajkot, and a <strong style="color:var(--cyan)">national-level rifle shooter</strong> with a strong foundation in cybersecurity, cyber law, and digital forensics.
+        </p>
+        <p>
+          My career reflects a rare convergence of technical precision and athletic discipline — honed through competitive shooting at the national and inter-university level, and applied to cybercrime investigations during my internship with <strong style="color:var(--magenta)">Gurugram Police, Haryana. & Cyber Crime Police - Rajkot City</strong>.
+        </p>
+        <p>
+          A proud <strong style="color:var(--yellow)">member of NRAI and GSRA</strong>, I bring together law enforcement insight, ethical hacking knowledge, and a deep commitment to advancing cybersecurity awareness across India.
+        </p>
+        <div class="about-tags">
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Digital Forensics</span>
+          <span class="tag">Cyber Law</span>
+          <span class="tag">Ethical Hacking</span>
+          <span class="tag">Rifle Shooting</span>
+          <span class="tag">IEEE Member</span>
+          <span class="tag">ACM Chair</span>
+          <span class="tag">NRAI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-label">// 02. Experience</div>
+    <h2 class="sec-title">Professional <span class="hl">Journey</span></h2>
+    <div class="sec-line"></div>
+    <div class="fade-in">
+      <div class="exp-card glass">
+        <div class="exp-year">2021 · HARYANA, INDIA</div>
+        <div class="exp-role">Cybercrime Cell Intern</div>
+        <div class="exp-org">Gurugram Police — Haryana Government</div>
+        <ul class="exp-list">
+          <li>Conducted in-depth case studies on cybercrime investigations and digital evidence collection</li>
+          <li>Analyzed cybercrime patterns; gained exposure to cyber forensics techniques including artifact recovery</li>
+          <li>Developed deep understanding of government policies, legal frameworks, and procedural compliance in cybercrime cases</li>
+          <li>Collaborated with law enforcement professionals, strengthening investigative and technical skills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<section id="experience">
+  <div class="container">
+    <div class="fade-in">
+      <div class="exp-card glass">
+        <div class="exp-year">2025· Rajkot, Gujarat, INDIA</div>
+        <div class="exp-role">Cybercrime Cell Intern - Rajkot City</div>
+        <div class="exp-org">Rajkot City Police — Cyber Crime Division</div>
+        <ul class="exp-list">
+          <li>Supported investigation-related activities</li>
+          <li>Conducted in-depth case studies on cybercrime investigations and digital evidence collection</li>
+          <li>Analyzed cybercrime patterns; gained exposure to cyber & Digital forensics</li>
+          <li>Developed deep understanding of government policies, legal frameworks, and procedural compliance in cybercrime cases</li>
+          <li>Participated in cyber awareness initiatives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="sec-label">// 03. Certifications</div>
+    <h2 class="sec-title">Skills &amp; <span class="hl">Credentials</span></h2>
+    <div class="sec-line"></div>
+    <div class="cert-grid">
+      <div class="cert-card glass fade-in">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-title">Cyber Security &amp; Digital Forensics</div>
+        <div class="cert-org">MSME Technology Centre, Bhopal · GoI · 2023</div>
+        <div class="cert-desc">Intensive training on cybersecurity practices and digital forensic techniques under a Government of India society.</div>
+      </div>
+      <div class="cert-card glass fade-in">
+        <div class="cert-icon">⚖️</div>
+        <div class="cert-title">Cyber Crime, Cyber Law &amp; Technology</div>
+        <div class="cert-org">Rashtriya Raksha University, Gandhinagar · 2025</div>
+        <div class="cert-desc">Specialized training covering cyber law frameworks and investigative processes at a premier national security university.</div>
+      </div>
+      <div class="cert-card glass fade-in">
+        <div class="cert-icon">🌐</div>
+        <div class="cert-title">Foreign Cyber Security Education</div>
+        <div class="cert-org">Newcastle College, United Kingdom</div>
+        <div class="cert-desc">Comprehensive coursework covering network security, data protection, and international threat mitigation strategies.</div>
+      </div>
+      <div class="cert-card glass fade-in">
+        <div class="cert-icon">💻</div>
+        <div class="cert-title">Certified Ethical Hacker (CEH v12 &amp; v13)</div>
+        <div class="cert-org">EC-Council University, New Mexico, USA</div>
+        <div class="cert-desc">Mastery of ethical hacking methodologies, vulnerability analysis, and cybersecurity defense — from EC-Council, the global gold standard.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS -->
+<section id="sports">
+  <div class="container">
+    <div class="sec-label">// 04. Sports</div>
+    <h2 class="sec-title">Rifle <span class="hl">Shooting</span></h2>
+    <div class="sec-line"></div>
+    <div class="sports-grid fade-in">
+      <div>
+        <div class="trophy-card glass" style="margin-bottom:1rem;">
+          <div class="trophy-rank">🥇 1st</div>
+          <div class="trophy-event">13th Open District Shooting Championship</div>
+          <div class="trophy-venue">Team Event · 2022</div>
+        </div>
+        <div class="trophy-card glass" style="margin-bottom:1rem;">
+          <div class="trophy-rank">🥈 2nd</div>
+          <div class="trophy-event">3rd Shri KG Prabhu Memorial Air Rifle/Pistol Championship</div>
+          <div class="trophy-venue">Ahmedabad · 2022</div>
+        </div>
+        <div class="trophy-card glass">
+          <div class="trophy-rank">10th</div>
+          <div class="trophy-event">54th Gujarat State Shooting Championship</div>
+          <div class="trophy-venue">Baroda · 2018</div>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:1.5rem; opacity:0.85;">As a member of the <strong style="color:var(--cyan)">National Rifle Association of India (NRAI)</strong> and <strong style="color:var(--cyan)">Gujarat State Rifle Association (GSRA)</strong>, I have represented at the highest levels of competitive shooting.</p>
+        <div class="sports-comps">
+          <div class="comp-item glass">
+            <div class="comp-dot"></div>
+            <div>
+              <strong style="color:#fff; font-weight:600;">West Zone Shooting Championship</strong><br>
+              <span style="font-size:0.82rem; color:var(--text-dim); font-family:'Share Tech Mono',monospace;">Indore · 2019</span>
+            </div>
+          </div>
+          <div class="comp-item glass">
+            <div class="comp-dot"></div>
+            <div>
+              <strong style="color:#fff; font-weight:600;">All India Inter University Competition</strong><br>
+              <span style="font-size:0.82rem; color:var(--text-dim); font-family:'Share Tech Mono',monospace;">Faridabad · 2022</span>
+            </div>
+          </div>
+          <div class="comp-item glass" style="border-left:2px solid var(--yellow); box-shadow:-4px 0 16px rgba(255,230,0,0.1);">
+            <div class="comp-dot" style="background:var(--yellow);box-shadow:0 0 10px var(--yellow);"></div>
+            <div>
+              <strong style="color:var(--yellow);">Alumni Award — Marwadi University</strong><br>
+              <span style="font-size:0.82rem; color:var(--text-dim); font-family:'Share Tech Mono',monospace;">For AIIU Performance · 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="sec-label">// 05. Achievements</div>
+    <h2 class="sec-title">Key <span class="hl">Highlights</span></h2>
+    <div class="sec-line"></div>
+    <div class="ach-grid">
+      <div class="ach-card glass fade-in">
+        <div class="ach-icon">🌍</div>
+        <div class="ach-text"><strong>28th Rank Worldwide</strong> in the EC-Council Global Challenge — secured 70% score within just 7 minutes, competing against global participants.</div>
+      </div>
+      <div class="ach-card glass fade-in">
+        <div class="ach-icon">🏛️</div>
+        <div class="ach-text"><strong>National Youth Parliament</strong> participant, Ministry of Parliamentary Affairs, Government of India (2026).</div>
+      </div>
+      <div class="ach-card glass fade-in">
+        <div class="ach-icon">🤖</div>
+        <div class="ach-text">Attended training on <strong>AI &amp; Cybersecurity</strong> at Rashtriya Raksha University (2025) and completed Cyber Security Awareness Program under Education Dept., Govt. of Gujarat.</div>
+      </div>
+      <div class="ach-card glass fade-in">
+        <div class="ach-icon">🚴</div>
+        <div class="ach-text">Participated in <strong>Saksham Cycle Rally</strong> (Green Ride) organized by Ministry of Petroleum &amp; Natural Gas (2019). Awarded Youth Pledge Certificate by Ministry of Youth Affairs and Sports.</div>
+      </div>
+      <div class="ach-card glass fade-in">
+        <div class="ach-icon">📋</div>
+        <div class="ach-text">Submitted a <strong>policy suggestion to the PMO</strong> regarding rifle shooting in SBI sports quota recruitment — received positive response and forwarded to Ministry of Sports and SBI (2024).</div>
+      </div>
+      <div class="ach-card glass fade-in">
+        <div class="ach-icon">🏛️</div>
+        <div class="ach-text">Served as <strong>Event Management Chair, ACM Rajkot Professional Chapter</strong> and Member of IEEE Gujarat Section. Lead Management at MU Fest Stall Committee (2025).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONOURS -->
+<section id="honours">
+  <div class="container">
+    <div class="sec-label">// 06. Honours</div>
+    <h2 class="sec-title">Recognition &amp; <span class="hl">Honour</span></h2>
+    <div class="sec-line"></div>
+    <div class="hon-list fade-in">
+      <div class="hon-item glass">
+        <div class="hon-num">01</div>
+        <div class="hon-text">Received birthday greetings from <strong style="color:var(--cyan)">Hon. Prime Minister of India Shri Narendra Modi</strong> and <strong style="color:var(--cyan)">Hon. Chief Minister of Gujarat Shri Bhupendra Patel.</strong></div>
+      </div>
+      <div class="hon-item glass">
+        <div class="hon-num">02</div>
+        <div class="hon-text">Honoured and appreciated by <strong style="color:var(--cyan)">Rajkot City Police &amp; Assistant Commissioner of Police</strong> (Cyber Crime Division) for contributions to cybersecurity awareness.</div>
+      </div>
+      <div class="hon-item glass">
+        <div class="hon-num">03</div>
+        <div class="hon-text">Honoured by <strong style="color:var(--cyan)">Chancellor of Saurashtra University</strong>, Rajkot, for ranking in the District Shooting Championship (2022).</div>
+      </div>
+      <div class="hon-item glass">
+        <div class="hon-num">04</div>
+        <div class="hon-text">Appreciated by <strong style="color:var(--cyan)">Shri Sarkar Talwar</strong>, Dronacharya Awardee and renowned sports mentor, for excellence in shooting.</div>
+      </div>
+      <div class="hon-item glass">
+        <div class="hon-num">05</div>
+        <div class="hon-text">Invited as <strong style="color:var(--magenta)">Chief Guest</strong> for SEBI, Consumer Protection &amp; Cyber Crime Awareness Program (January 2026) organized by Kankot Government School.</div>
+      </div>
+      <div class="hon-item glass">
+        <div class="hon-num">06</div>
+        <div class="hon-text"><strong style="color:var(--yellow)">Alumni Award</strong> presented by Hon. Dean Shri Sridaran, Marwadi University (2024).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGACY -->
+<section id="legacy">
+  <div class="container">
+    <div class="sec-label">// 07. Legacy</div>
+    <h2 class="sec-title">Family <span class="hl">Legacy</span></h2>
+    <div class="sec-line"></div>
+    <div class="legacy-card fade-in">
+      <div class="legacy-title">🇮🇳 Grandson of a Freedom Fighter</div>
+      <div class="legacy-text">
+        I am the grandson of <strong style="color:var(--yellow)">Shri Manubhai Vithalani (M.J. Vithalani)</strong> — a distinguished freedom fighter and <strong style="color:var(--yellow)">Azad Hind Fauj soldier</strong> who was honoured by multiple Presidents, Prime Ministers, and government authorities of India.
+        <br><br>
+        On his birth centenary, a road named <em style="color:var(--yellow)">"Shri Manubhai Vithalani Jaher Marg"</em> was inaugurated on <strong style="color:#fff">16 February 2026</strong> in Rajkot — graced by Mayor Mrs. Nayanaben Pedhadiya, recognizing his invaluable contribution to India's independence.
+        <br><br>
+        This enduring legacy continues to inspire my dedication toward national service, digital security, and societal contribution.
+      </div>
+      <div class="road-badge">🛣️ Shri Manubhai Vithalani Jaher Marg · Inaugurated 16 Feb 2026 · Rajkot</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="container">
+    <div class="sec-label">// 08. Vision</div>
+    <h2 class="sec-title">Professional <span class="hl">Mission</span></h2>
+    <div class="sec-line"></div>
+    <div class="vision-grid">
+      <div class="vision-card glass fade-in">
+        <div class="vision-icon">🔍</div>
+        <div class="vision-text">Strengthen cybercrime investigation systems and digital forensics infrastructure across India.</div>
+      </div>
+      <div class="vision-card glass fade-in">
+        <div class="vision-icon">🤝</div>
+        <div class="vision-text">Bridge the gap between cybersecurity professionals and law enforcement agencies for effective collaboration.</div>
+      </div>
+      <div class="vision-card glass fade-in">
+        <div class="vision-icon">📡</div>
+        <div class="vision-text">Promote cybersecurity awareness and digital safety at a national level through education and outreach.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAROUSEL / GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="sec-label">// 09. Highlights</div>
+    <h2 class="sec-title">Life in <span class="hl">Motion</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div style="position:relative;">
+    <div class="carousel-fade-l"></div>
+    <div class="carousel-fade-r"></div>
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carousel-track">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE GALLERY -->
+<section id="image-gallery">
+  <div class="container">
+    <div class="sec-label">// 10. Gallery</div>
+    <h2 class="sec-title">Visual <span class="hl">Journey</span></h2>
+    <div class="sec-line"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in" data-image="pmo greetings.jpeg">
+        <img src="pmo greetings.jpeg" alt="Prime Minister's Birthday Greetings">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Prime Minister's Birthday Greetings</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="cmo greetings.jpeg">
+        <img src="cmo greetings.jpeg" alt="Chief Minister's Birthday Greetings">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Chief Minister's Birthday Greetings</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="youth parliament.jpeg">
+        <img src="youth parliament.jpeg" alt="Youth Parliament">
+        <div class="gallery-overlay">
+          <div class="gallery-label">🌐 Professional Networks</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="sebi1.jpeg">
+        <img src="sebi1.jpeg" alt="Cyber Awareness SEBI">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Cyber Awareness SEBI</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="shooting1.jpeg">
+        <img src="shooting1.jpeg" alt="Rifle Shooting">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Rifle Shooting</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="vibrant2.jpeg">
+        <img src="vibrant2.jpeg" alt="Vibrant Gujarat">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Vibrant Gujarat</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="acp.jpeg">
+        <img src="acp.jpeg" alt="Assistant Commisioner Of Police">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Assistant Commisioner Of Police</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="tedx.jpeg">
+        <img src="tedx.jpeg" alt="Tedx Event">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Tedx Event</div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in" data-image="recog.jpeg">
+        <img src="recog.jpeg" alt="Recognition">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Recognition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" src="" alt="">
+  <div class="lightbox-nav">
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">NANDAN VITHALANI</div>
+  <div style="font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--text-dim); margin-bottom:1rem;">BCA Graduate · Cybersecurity Professional · National Rifle Shooter</div>
+  <div class="footer-links">
+    <a href="mailto:nandanvithalani999@gmail.com">nandanvithalani999@gmail.com</a>
+    <!--<a href="tel:+91 88888884028">+91 88888884028</a>-->
+    <a href="https://linkedin.com/in/nandan-vithalani-b387a01a4" target="_blank">LinkedIn</a>
+    <a href="#hero">Back to Top ↑</a>
+  </div>
+  <div class="footer-copy">© 2026 Nandan Vithalani · Rajkot, Gujarat, India</div>
+</footer>
+
+<script>
+// ── SCROLL PROGRESS ──
+window.addEventListener('scroll', () => {
+  const bar = document.getElementById('scroll-bar');
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  bar.style.width = (scrollTop / scrollHeight * 100) + '%';
+});
+
+// ── TYPING ANIMATION ──
+const phrases = [
+  'Cybersecurity Professional',
+  'National Rifle Shooter',
+  'Digital Forensics Analyst',
+  'Freedom Fighter Legacy',
+  'Youth Parliament - Bharatiya Democracy',
+  'Global Membership: IEEE & ACM Member'
+];
+let phraseIdx = 0, charIdx = 0, deleting = false;
+const typingEl = document.getElementById('typing-text');
+
+function type() {
+  const phrase = phrases[phraseIdx];
+  if (!deleting) {
+    charIdx++;
+    if (charIdx > phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    charIdx--;
+    if (charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
+  }
+  typingEl.innerHTML = phrase.slice(0, charIdx) + '<span class="cursor"></span>';
+  setTimeout(type, deleting ? 40 : 70);
+}
+type();
+
+// ── FADE IN ON SCROLL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── CAROUSEL DATA ──
+const slides = [
+  { cat:'cyan', color:'cyan', icon:'🛡️', title:'CEH Certified', desc:'EC-Council Certified Ethical Hacker v12 & v13 — mastery of offensive security and defense.' },
+  { cat:'magenta', color:'magenta', icon:'🔫', title:'National Shooter', desc:'Representing India at West Zone and All India Inter University rifle shooting competitions.' },
+  { cat:'yellow', color:'yellow', icon:'🥇', title:'District Champion', desc:'1st Place at 13th Open District Shooting Championship — Team Event, 2022.' },
+  { cat:'green', color:'green', icon:'🌍', title:'Global Top 28', desc:'28th worldwide in EC-Council Global Challenge with 70% score in under 7 minutes.' },
+  { cat:'cyan', color:'cyan', icon:'👮', title:'Police Internship', desc:'Cybercrime Cell Intern with Gurugram Police — hands-on digital forensics and investigation.' },
+  { cat:'magenta', color:'magenta', icon:'🏛️', title:'National Youth Parliament', desc:'Participant in the National Youth Parliament, Ministry of Parliamentary Affairs, 2026.' },
+  { cat:'yellow', color:'yellow', icon:'🇮🇳', title:'Freedom Fighter Legacy', desc:'Grandson of Azad Hind Fauj soldier Shri Manubhai Vithalani — road named in his honour in Rajkot.' },
+  { cat:'green', color:'green', icon:'📋', title:'PMO Policy Initiative', desc:'Submitted shooting sports quota proposal to Prime Minister\'s Office — received positive forwarding.' },
+  { cat:'cyan', color:'cyan', icon:'🎓', title:'Marwadi University', desc:'Bachelor of Computer Applications (BCA), 2021–2023. Alumni Award recipient 2024.' },
+  { cat:'magenta', color:'magenta', icon:'🌐', title:'UK Certification', desc:'Foreign Cyber Security Education Program — Newcastle College, United Kingdom.' },
+  { cat:'yellow', color:'yellow', icon:'⚡', title:'Cyber Awareness Lead', desc:'Conducted sessions at Rajkot Police HQ, Commissioner Office, and SEBI seminars across Gujarat.' },
+  { cat:'green', color:'green', icon:'🤝', title:'ACM Event Chair', desc:'Event Management Chair at ACM Rajkot Professional Chapter and IEEE Gujarat Section Member.' },
+];
+
+const track = document.getElementById('carousel-track');
+// Duplicate for infinite scroll
+[...slides, ...slides].forEach(s => {
+  const div = document.createElement('div');
+  div.className = `carousel-slide ${s.color}`;
+  div.innerHTML = `
+    <div class="slide-category ${s.color}">${s.cat.toUpperCase()} // HIGHLIGHT</div>
+    <div class="slide-icon">${s.icon}</div>
+    <div class="slide-title">${s.title}</div>
+    <div class="slide-desc">${s.desc}</div>
+  `;
+  track.appendChild(div);
+});
+
+// ── GALLERY LIGHTBOX ──
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const lightboxClose = document.querySelector('.lightbox-close');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+const galleryItems = document.querySelectorAll('.gallery-item');
+let currentImageIndex = 0;
+const allImages = Array.from(galleryItems).map(item => item.dataset.image);
+
+function openLightbox(index) {
+  currentImageIndex = index;
+  lightboxImg.src = allImages[currentImageIndex];
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function showNextImage() {
+  currentImageIndex = (currentImageIndex + 1) % allImages.length;
+  lightboxImg.src = allImages[currentImageIndex];
+}
+
+function showPrevImage() {
+  currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+  lightboxImg.src = allImages[currentImageIndex];
+}
+
+galleryItems.forEach((item, index) => {
+  item.addEventListener('click', () => openLightbox(index));
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrev.addEventListener('click', showPrevImage);
+lightboxNext.addEventListener('click', showNextImage);
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showPrevImage();
+  if (e.key === 'ArrowRight') showNextImage();
+});
+</script>
+</body>
+</html>
